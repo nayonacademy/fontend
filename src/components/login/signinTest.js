@@ -15,7 +15,7 @@ export function SignInTest(props){
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    axios.post("http://localhost:8000/api/jwtauth/token/", {
+    axios.post(API_URL+"/api/jwtauth/token/", {
       username,
       password
     }).then(result => {

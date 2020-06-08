@@ -17,7 +17,7 @@ function ConferenceClaim(props){
     const handleSubmit = (evt) => {
         evt.preventDefault();
         console.log("hello", fullname, email, website, conference_name, street_address, city, state, zipcode);
-        axios.post("http://localhost:8000/api/claim/list/", {
+        axios.post(API_URL+"/api/claim/list/", {
             fullname,
             email,
             website,

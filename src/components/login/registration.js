@@ -39,7 +39,7 @@ class Registration extends React.Component<any, any> {
     let user = JSON.stringify(users)
     console.log("all data",users);
 // POST data
-    let response = axios.post("http://127.0.0.1:8000/api/jwtauth/register/", {
+    let response = axios.post(API_URL+"/api/jwtauth/register/", {
       username,
       email,
       password,
