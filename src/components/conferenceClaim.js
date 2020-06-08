@@ -1,8 +1,42 @@
-import React from 'react';
+import React, {useState} from 'react';
 import axios from "axios";
+import { Link, Redirect } from "react-router-dom";
+import { useAuth } from "../context/auth";
 const API_URL = process.env.REACT_APP_API_URL;
 
 function ConferenceClaim(props){
+    const [fullname, setFullName] = useState("");
+    const [email, setEmail] = useState("");
+    const [website, setWebsite] = useState("");
+    const [conference_name, setConferenceName] = useState("");
+    const [street_address, setStreetAddress] = useState("");
+    const [city, setCity] = useState("");
+    const [state, setState] = useState("");
+    const [zipcode, setZipcode] = useState("");
+    console.log("load");
+    const handleSubmit = (evt) => {
+        evt.preventDefault();
+        console.log("hello", fullname, email, website, conference_name, street_address, city, state, zipcode);
+        axios.post("http://localhost:8000/api/claim/list/", {
+            fullname,
+            email,
+            website,
+            conference_name,
+            street_address,
+            city,
+            state,
+            zipcode
+        }).then(result => {
+            console.log(result);
+            if (result.status === 201) {
+                console.log(result);
+                window.location.href = "/claim";
+            }
+        }).catch(e => {
+
+        });
+
+    }
         return(
             <div className="body-wrapper">
             <div className="b2b-container-signup">
@@ -15,21 +49,81 @@ function ConferenceClaim(props){
                   <div className="card claim">
                     <h1 className="heading-claim form">Claim your conference and start for free.</h1>
                     <div className="w-form">
-                      <form>
-                          <label>Full name</label>
-                        <input type="text" className="claim-form w-input" max={256} name="fullname" data-name="Name" placeholder="Full name" id="name" />
-                          <label>Email address</label>
-                          <input type="email"  className="claim-form w-input" max="256" name="email" data-name="Email address" placeholder="Email address" id="Email-address" />
-                              <label>Website</label><input type="text" className="claim-form w-input" max="256" name="website" data-name="Website" placeholder="Website" id="Website" />
-                                  <label >Conference Name</label>
-                                  <input type="text"  className="claim-form w-input" max={256} name="conference_name" data-name="Conference or Business Name" placeholder="Conference or Business Name" id="Conference-or-Business-Name" />
-                                      <label >Street Address</label>
-                                  <input type="text"  className="claim-form w-input" max={256} name="street_address" data-name="Mailing Address" placeholder="Street Address" id="Mailing-Address" />
-                        <div className="columns-8 w-row">
-                          <div className="column-24 w-col w-col-4"><label >City</label><input type="text"  className="claim-form city w-input" max={256} name="city" data-name="City" placeholder="City" id="City" /></div>
-                          <div className="column-25 w-col w-col-4"><label  className="field-label">State</label><input type="text"  className="claim-form state w-input" max={256} name="State" data-name="state" placeholder="State" id="State" /></div>
-                          <div className="column-26 w-col w-col-4"><label>Zip</label><input type="text"  className="claim-form zip w-input" max={256} name="Zipcode" data-name="Zipcode" placeholder="zipcode" id="Zipcode" /></div>
-                        </div><input type="submit" value="Start!" data-wait="Please wait..." className="submit-button-2 w-button"/>
+                        <form onSubmit={handleSubmit}>
+                            <label>Full name</label>
+                            <input
+                                type="text"
+                                className="claim-form w-input"
+                                max={256} name="fullname"
+                                value={fullname}
+                                placeholder="Full name"
+                                onChange={e => setFullName(e.target.value)} />
+                            <label>Email address</label>
+                            <input
+                                type="email"
+                                className="claim-form w-input"
+                                max="256"
+                                name="email"
+                                value={email}
+                                placeholder="Email address"
+                                onChange={e => setEmail(e.target.value)} />
+                            <label>Website</label>
+                            <input
+                                type="text"
+                                className="claim-form w-input"
+                                max="256"
+                                name="website"
+                                value={website}
+                                placeholder="Website"
+                                onChange={e => setWebsite(e.target.value)} />
+                            <label >Conference Name</label>
+                            <input
+                                type="text"
+                                className="claim-form w-input"
+                                max={256}
+                                name="conference_name"
+                                value={conference_name}
+                                placeholder="Conference or Business Name"
+                                onChange={e => setConferenceName(e.target.value)} />
+                            <label >Street Address</label>
+                            <input
+                                type="text"
+                                className="claim-form w-input"
+                                max={256}
+                                name="street_address"
+                                value={street_address}
+                                placeholder="Street Address"
+                                onChange={e => setStreetAddress(e.target.value)} />
+                            <div className="columns-8 w-row">
+                              <div className="column-24 w-col w-col-4"><label >City</label>
+                                  <input
+                                      type="text"
+                                      className="claim-form city w-input"
+                                      max={256}
+                                      name="city"
+                                      value={city}
+                                      placeholder="City"
+                                      onChange={e => setCity(e.target.value)} /></div>
+                              <div className="column-25 w-col w-col-4"><label  className="field-label">State</label>
+                                  <input
+                                      type="text"
+                                      className="claim-form state w-input"
+                                      max={256}
+                                      name="state"
+                                      value={state}
+                                      placeholder="State"
+                                      onChange={e => setState(e.target.value)} /></div>
+                              <div className="column-26 w-col w-col-4"><label>Zip</label>
+                                  <input
+                                      type="text"
+                                      className="claim-form zip w-input"
+                                      max={256}
+                                      name="zipcode"
+                                      value={zipcode}
+                                      placeholder="zipcode"
+                                      onChange={e => setZipcode(e.target.value)} /></div>
+                            </div>
+                            <input type="submit" value="Start" className="submit-button-2 w-button"/>
                       </form>
                       <div className="w-form-done">
                         <div>Thank you! Your submission has been received!</div>

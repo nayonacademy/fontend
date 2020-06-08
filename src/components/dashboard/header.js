@@ -25,7 +25,7 @@ function DashboardTop(props){
               <a href="/login" className="sign-in-button w-button">
                 Sign in
               </a>
-              <a href="/login" className="get-started-button w-button">
+              <a href="/claim" className="get-started-button w-button">
                 Get Started
               </a>
             </div>

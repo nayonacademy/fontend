@@ -29,10 +29,6 @@ export default function SignIn(props){
       setIsError(true);
     });
 
-    if (isLoggedIn) {
-      return <Redirect to="/" />;
-    }
-
   }
   if (isLoggedIn) {
     return <Redirect to="/dashboard" />;
