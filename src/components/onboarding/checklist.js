@@ -1,6 +1,5 @@
 import React from 'react';
-class CheckList extends React.Component{
-    render(){
+function CheckList(props){
         return(
             <div className="b2b-container-onboarding">
             <div className="onboarding-progress">
@@ -74,6 +73,5 @@ class CheckList extends React.Component{
             </div>
             </div>
         )
-    }
 }
 export default CheckList;

@@ -2,8 +2,7 @@ import React from 'react';
 import TopNav from "./header";
 import Sidebar from "./sidebar";
 import Settings from "./settings";
-class SettingsIndex extends React.Component{
-    render(){
+function SettingsIndex(props){
         return(
 
             <div className="bodycontainer">
@@ -15,6 +14,5 @@ class SettingsIndex extends React.Component{
             </div>
 
         )
-    }
 }
 export default SettingsIndex;

@@ -2,8 +2,7 @@ import React from 'react';
 import Header from "../headerSimple";
 import Footer from "../footer";
 import InformationCollection from "./informationCollection";
-class InformationCollectionIndex extends React.Component{
-    render(){
+function InformationCollectionIndex(props){
         return(
 
             <div>
@@ -13,6 +12,5 @@ class InformationCollectionIndex extends React.Component{
             </div>
 
         )
-    }
 }
 export default InformationCollectionIndex;

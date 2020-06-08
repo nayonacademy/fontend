@@ -1,8 +1,7 @@
 import React from 'react';
 import HeaderSimple from '../headerSimple';
 import Footer from "../footer";
-class Login extends React.Component{
-    render(){
+function Login(props){
         return(
           <>
             <div className="body-wrapper log-in">
@@ -61,6 +60,5 @@ class Login extends React.Component{
           </div>
           </>
         )
-    }
 }
 export default Login;

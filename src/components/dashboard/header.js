@@ -1,6 +1,5 @@
 import React from 'react';
-class DashboardTop extends React.Component{
-    render(){
+function DashboardTop(props){
         return(
           <div className="co nav">
             <div className="logo-container">
@@ -33,6 +32,5 @@ class DashboardTop extends React.Component{
           </div>
 
         )
-    }
 }
 export default DashboardTop;

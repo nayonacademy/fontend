@@ -1,6 +1,5 @@
 import React from 'react';
-class Purchases extends React.Component{
-    render(){
+function Purchases(props){
         return(
             <div className="w-tab-content">
             <div data-w-tab="Tab 1" className="tab-pane-tab-1 w-tab-pane w--tab-active">
@@ -421,8 +420,6 @@ class Purchases extends React.Component{
             </div>
             <div data-w-tab="Tab 3" className="w-tab-pane" />
             </div>
-
         )
-    }
 }
 export default Purchases;

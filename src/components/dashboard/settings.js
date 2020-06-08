@@ -1,6 +1,5 @@
 import React from 'react';
-class Settings extends React.Component{
-    render(){
+function Settings(props){
         return(
             <div data-duration-in={300} data-duration-out={100} className="w-tabs">
             <div className="tabs-menu-2 w-tab-menu">
@@ -72,6 +71,5 @@ class Settings extends React.Component{
             </div>
             </div>
         )
-    }
 }
 export default Settings;

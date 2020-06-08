@@ -2,8 +2,7 @@ import React from 'react';
 import Header from "../headerSimple";
 import Footer from "../footer";
 import Account from "./accountInformation";
-class AccountIndex extends React.Component{
-    render(){
+function AccountIndex(props){
         return(
             <>
             <Header />
@@ -20,6 +19,5 @@ class AccountIndex extends React.Component{
             <Footer />
             </>
         )
-    }
 }
 export default AccountIndex;

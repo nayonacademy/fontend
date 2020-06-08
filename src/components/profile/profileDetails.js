@@ -1,6 +1,5 @@
 import React from 'react';
-class ProfileDetails extends React.Component{
-    render(){
+function ProfileDetails(props){
         return(
             <div className="user-template-wrapper user">
             <div className="section public">
@@ -382,6 +381,5 @@ class ProfileDetails extends React.Component{
             </div>
           </div>        
         )
-    }
 }
 export default ProfileDetails;

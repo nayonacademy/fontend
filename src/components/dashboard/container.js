@@ -1,6 +1,5 @@
 import React from 'react';
-class DashboardContainer extends React.Component{
-    render(){
+function DashboardContainer(props){
         return(
             <div className="user-template-wrapper">
               <div className="section public">
@@ -393,6 +392,5 @@ class DashboardContainer extends React.Component{
               </div>
             </div>
         )
-    }
 }
 export default DashboardContainer;

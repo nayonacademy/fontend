@@ -1,22 +1,24 @@
-import React, { useState } from "react";
+import React, {useState} from 'react';
+import HeaderSimple from '../headerSimple';
+import Footer from "../footer";
+import axios from "axios";
 import { Link, Redirect } from "react-router-dom";
-import axios from 'axios';
 import { useAuth } from "../../context/auth";
+const API_URL = process.env.REACT_APP_API_URL;
 
-function SingIn(props) {
+export default function SignIn(props){
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [isError, setIsError] = useState(false);
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  const setAuthTokens = useAuth();
+  const { setAuthTokens } = useAuth();
 
-  function postLogin() {
-    console.log(username, password);
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
     axios.post("http://localhost:8000/api/jwtauth/token/", {
       username,
       password
     }).then(result => {
-      console.log(result);
       if (result.status === 200) {
         setAuthTokens(result.data);
         setLoggedIn(true);
@@ -26,13 +28,16 @@ function SingIn(props) {
     }).catch(e => {
       setIsError(true);
     });
-  }
 
+    if (isLoggedIn) {
+      return <Redirect to="/" />;
+    }
+
+  }
   if (isLoggedIn) {
     return <Redirect to="/dashboard" />;
   }
-
-  return (
+  return(
       <>
         <div className="body-wrapper log-in">
           <div className="access-container w-container">
@@ -40,31 +45,31 @@ function SingIn(props) {
               <h1 className="heading login">Login to read and write reviews for your favorite conferences. </h1>
               <div className="">
                 <div className="">
-                  <form>
-
+                  <form onSubmit={handleSubmit}>
                     <div className="">
                       <label className="email-label">Username</label>
-                      <input type="username" value={username}
-                             onChange={e => {
-                               setUserName(e.target.value);
-                             }}
-                             placeholder="email"
-                             className="user-email w-input" max={256}
+                      {/*<input type="text" value={username} onChange={event => setUsername(event.target.value)} className="user-email w-input" max={256} name="username" placeholder="Username" />*/}
+                      <input
+                          type="text"
+                          value={username}
+                          onChange={e => setUserName(e.target.value)}
+                          className="user-email w-input" max={256}
+                          placeholder="Username"
                       />
                     </div>
                     <div className="">
                       <label className="user-name-label">Password </label>
-                    <input
-                        type="password"
-                        value={password}
-                        onChange={e => {
-                          setPassword(e.target.value);
-                        }}
-                        placeholder="password"
-                        className="user-email w-input" max={256}
-                    />
+                      <input
+                          type="password"
+                          value={password}
+                          onChange={e => setPassword(e.target.value)}
+                          className="user-email w-input" max={256}
+                          placeholder="Password"
+                      />
                     </div>
-                    <button className="w-button" onClick={postLogin}>Sign In</button>
+                    <div>
+                      <input type="submit" value="Sign Up" className="w-button"/>
+                    </div>
                   </form>
                 </div>
               </div>
@@ -72,7 +77,5 @@ function SingIn(props) {
           </div>
         </div>
       </>
-  );
+  )
 }
-
-export default SingIn;

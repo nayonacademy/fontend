@@ -1,6 +1,5 @@
 import React from 'react';
-class AccountInformation extends React.Component{
-    render(){
+function AccountInformation(props){
         return(
             <div className="body-wrapper">
             <div className="b2b-container-account-info">
@@ -356,9 +355,6 @@ class AccountInformation extends React.Component{
                 </div>
             </div>
             </div>
-
-                
         )
-    }
 }
 export default AccountInformation;

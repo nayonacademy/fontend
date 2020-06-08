@@ -1,6 +1,5 @@
 import React from 'react';
-class EventLocation extends React.Component{
-    render(){
+function EventLocation(props){
         return(
             <div className="body-wrapper">
             <div className="b2b-container-onboarding">
@@ -269,6 +268,5 @@ class EventLocation extends React.Component{
             </div>
 
         )
-    }
 }
 export default EventLocation;

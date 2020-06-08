@@ -2,8 +2,7 @@ import React from 'react';
 import Header from "../headerSimple";
 import Footer from "../footer";
 import Category from "./category";
-class CategoryIndex extends React.Component{
-    render(){
+function CategoryIndex(props){
         return(
             <>
             <Header />
@@ -25,6 +24,5 @@ class CategoryIndex extends React.Component{
             <Footer />
             </>
         )
-    }
 }
 export default CategoryIndex;

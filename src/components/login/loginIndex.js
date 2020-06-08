@@ -2,8 +2,7 @@ import React from 'react';
 import HeaderSimple from '../headerSimple';
 import Footer from "../footer";
 import Login from "./login";
-class LoginIndex extends React.Component{
-    render(){
+function LoginIndex(props){
         return(
           <>
           <HeaderSimple />
@@ -11,6 +10,5 @@ class LoginIndex extends React.Component{
           <Footer />
           </>
         )
-    }
 }
 export default LoginIndex;

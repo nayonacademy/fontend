@@ -2,8 +2,7 @@ import React from 'react';
 import TopNav from "./header";
 import Sidebar from "./sidebar";
 import Purchase from "./purchase";
-class PurchaseIndex extends React.Component{
-    render(){
+function PurchaseIndex(props){
         return(
             <div className="bodycontainer">
             <Sidebar />
@@ -13,6 +12,5 @@ class PurchaseIndex extends React.Component{
             </div>
             </div>
         )
-    }
 }
 export default PurchaseIndex;

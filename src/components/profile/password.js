@@ -1,6 +1,5 @@
 import React from 'react';
-class Password extends React.Component{
-    render(){
+function Password(props){
         return(
             <div className="body-wrapper">
             <div className="b2b-container-onboarding">
@@ -91,6 +90,5 @@ class Password extends React.Component{
           </div>
                 
         )
-    }
 }
 export default Password;

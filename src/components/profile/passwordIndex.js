@@ -2,8 +2,7 @@ import React from 'react';
 import Header from "../headerSimple";
 import Footer from "../footer";
 import Password from "./password";
-class PasswordIndex extends React.Component{
-    render(){
+function PasswordIndex(props){
         return(
 
             <div>
@@ -13,6 +12,5 @@ class PasswordIndex extends React.Component{
             </div>
 
         )
-    }
 }
 export default PasswordIndex;

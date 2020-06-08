@@ -1,6 +1,5 @@
 import React from 'react';
-class Category extends React.Component{
-    render(){
+function Category(props){
         return(
             <div className="body-wrapper-cat">
             <div className="b2b-container-category">
@@ -487,9 +486,6 @@ class Category extends React.Component{
                 </div>
             </div>
             </div>
-
-                
         )
-    }
 }
 export default Category;

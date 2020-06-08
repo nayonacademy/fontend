@@ -2,8 +2,7 @@ import React from 'react';
 import HeaderSimple from '../headerSimple';
 import Footer from "../footer";
 import Registration from "./registration";
-class RegistrationIndex extends React.Component{
-    render(){
+function RegistrationIndex(props){
         return(
           <>
           <HeaderSimple />
@@ -11,6 +10,5 @@ class RegistrationIndex extends React.Component{
           <Footer />
           </>
         )
-    }
 }
 export default RegistrationIndex;

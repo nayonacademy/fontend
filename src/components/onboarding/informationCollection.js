@@ -1,6 +1,5 @@
 import React from 'react';
-class InformationCollection extends React.Component{
-    render(){
+function InformationCollection(props){
         return(
             <div className="body-wrapper">
             <div className="b2b-container-onboarding">
@@ -369,8 +368,6 @@ class InformationCollection extends React.Component{
                 </div>
             </div>
             </div>
-
         )
-    }
 }
 export default InformationCollection;

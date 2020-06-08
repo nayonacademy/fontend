@@ -1,13 +1,17 @@
 import React from 'react';
-class DashboardSidebar extends React.Component{
-    render(){
+import { useAuth } from "../../context/auth";
+function DashboardSidebar(props) {
+    const { setAuthTokens } = useAuth();
+    function logOut() {
+        setAuthTokens();
+    }
         return(
             <div className="menu-container">
             <div className="logo">
                 <h1 className="heading dashboard">ConferenceRanker</h1>
             </div>
             <div className="store-navigation">
-                <div className="store-name admin">Logout</div>
+                <a href="#" onClick={logOut} className="store-name admin">Logout</a>
                 <div className="store-name store">Need to contact us? </div>
             </div>
             <div className="card">
@@ -30,6 +34,5 @@ class DashboardSidebar extends React.Component{
             </div>
             </div>
         )
-    }
 }
 export default DashboardSidebar;

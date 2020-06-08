@@ -2,8 +2,7 @@ import React from 'react';
 import Header from "./header";
 import Footer from "./footer";
 import Conferences from "./conferenses";
-class Home extends React.Component{
-    render(){
+function Home(props){
         return(
 
             <div>
@@ -13,6 +12,5 @@ class Home extends React.Component{
             </div>
 
         )
-    }
 }
 export default Home;

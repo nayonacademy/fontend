@@ -7,33 +7,34 @@ import { useAuth } from "../../context/auth";
 const API_URL = process.env.REACT_APP_API_URL;
 
 export function SignInTest(props){
-
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [isError, setIsError] = useState(false);
-  const setAuthTokens = useAuth();
-  const [username, setUsername] = useState("");
+  const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const { setAuthTokens } = useAuth();
+
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    console.log("hello", username, password);
     axios.post("http://localhost:8000/api/jwtauth/token/", {
       username,
       password
     }).then(result => {
       if (result.status === 200) {
-        console.log(result);
         setAuthTokens(result.data);
         setLoggedIn(true);
-        window.location.href = "/dashboard";
       } else {
         setIsError(true);
       }
     }).catch(e => {
       setIsError(true);
     });
+
+    if (isLoggedIn) {
+      return <Redirect to="/" />;
+    }
+
   }
   if (isLoggedIn) {
-    console.log("loggin");
     return <Redirect to="/dashboard" />;
   }
 return(
@@ -52,7 +53,7 @@ return(
                   <input
                       type="text"
                       value={username}
-                      onChange={e => setUsername(e.target.value)}
+                      onChange={e => setUserName(e.target.value)}
                       className="user-email w-input" max={256}
                       placeholder="Username"
                   />

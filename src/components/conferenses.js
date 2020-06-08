@@ -1,6 +1,5 @@
 import React from 'react';
-class Conferences extends React.Component{
-    render(){
+function Conferences(props){
         return(
             <div className="main">
             <div className="key">
@@ -347,6 +346,5 @@ class Conferences extends React.Component{
             </div>
           </div>
         )
-    }
 }
 export default Conferences;

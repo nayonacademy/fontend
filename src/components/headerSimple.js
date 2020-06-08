@@ -1,6 +1,6 @@
 import React from 'react';
-class HeaderSimple extends React.Component{
-    render(){
+
+function HeaderSimple(props){
         return(
 
 <div className="co nav">
@@ -35,6 +35,6 @@ class HeaderSimple extends React.Component{
 
 
         )
-    }
+
 }
 export default HeaderSimple;
