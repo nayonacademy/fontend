@@ -4,9 +4,9 @@ import Footer from "../footer";
 import axios from "axios"; 
 import { NavLink } from 'react-router-dom'
 const API_URL = process.env.REACT_APP_API_URL;
-class Registration extends React.Component<any, any> {
+class Registration extends React.Component {
 
-  constructor(props:any) {
+  constructor(props) {
     super(props);
     this.state = {
       email: "",
@@ -15,13 +15,13 @@ class Registration extends React.Component<any, any> {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange = (event:any) =>{
+  handleChange = (event) =>{
     let name = event.target.name;
     let value = event.target.value;
     this.setState({[name]:value});
   }
 
-  handleSubmit = (event:any) => {
+  handleSubmit = (event) => {
     event.preventDefault();
     let { user } = this.state;
     console.log(this.state);
