@@ -1,32 +1,55 @@
-import React from 'react';
+import React, {useState} from 'react';
+import axios from "axios";
+import { Link, Redirect } from "react-router-dom";
+import { useAuth } from "../../context/auth";
+import mockup from '../../img/mock.jpg';
+import plusCircle from "../../img/plus-circle.svg";
+import chevronRight from "../../img/chevron-right.svg"
+const API_URL = process.env.REACT_APP_API_URL;
+
 function InformationCollection(props){
+    const [isLoggedIn, setLoggedIn] = useState(false);
+    const [isError, setIsError] = useState(false);
+    const [displayName, setdisplayName] = useState("");
+    const [webiste, setWebiste] = useState("");
+    const [about, setAbout] = useState("");
+    const [phone, setPhone] = useState("");
+    const [email, setEmail] = useState("");
+    const [address, setAddress] = useState("");
+    const [city, setCity] = useState("");
+    const [zipcode, setZipcode] = useState("");
+    const [facebook, setFacebook] = useState("");
+    const [twitter, setTwitter] = useState("");
+    const [instagram, setInstagram] = useState("");
+    const [orgId, setOrgId] = useState("");
+    const { setAuthTokens } = useAuth();
+
+    const handleSubmit = (evt) => {
+        evt.preventDefault();
+        axios.post(API_URL+"/api/jwtauth/token/", {
+            // username,
+            // password
+        }).then(result => {
+            if (result.status === 200) {
+                setAuthTokens(result.data);
+                setLoggedIn(true);
+            } else {
+                setIsError(true);
+            }
+        }).catch(e => {
+            setIsError(true);
+        });
+
+    }
         return(
+            <>
+            <div className="breadcrumbs">
+                <h1 className="breakcrumbs-heading">Settings</h1><img src={chevronRight} width="18"
+                                                                      alt="" className="image-2"/>
+                <h1 className="breakcrumbs-heading current">Account Information</h1>
+            </div>
             <div className="body-wrapper">
             <div className="b2b-container-onboarding">
-                <div className="onboarding-progress">
-                <div className="onboarding-line" />
-                <div className="div-block-24">
-                    <div className="onboarding-circle completed" />
-                    <p>password</p>
-                </div>
-                <div className="div-block-23">
-                    <div className="onboarding-circle current" />
-                    <p>information</p>
-                </div>
-                <div className="div-block-22">
-                    <div className="onboarding-circle" />
-                    <p>finalize</p>
-                </div>
-                </div>
-                <div className="card">
-                <div className="card-heading">
-                    <h1 className="card-title">Let's gather some information.</h1>
-                </div>
-                <p className="paragraph information">
-                    The following information will be displayed on your public profile. This
-                    information can be edited at any time in the settings panel.
-                </p>
-                </div>
                 <div className="onboarding-col-info w-row">
                 <div className="column-27 w-col w-col-8 w-col-small-small-stack">
                     <div className="card information">
@@ -36,7 +59,7 @@ function InformationCollection(props){
                         name="email-form"
                         data-name="Email Form"
                         className="form-information w-clearfix"
-                        >
+                        onSubmit={handleSubmit}>
                         <div className="form-first-half">
                             <label htmlFor="Profile-name">Display name</label>
                             <input
@@ -47,6 +70,8 @@ function InformationCollection(props){
                             data-name="Profile name"
                             placeholder="Enter your conference name"
                             id="Profile-name"
+                            value={displayName}
+                            onChange={e => setdisplayName(e.target.value)}
                             />
                             <label htmlFor="Website">Company website</label>
                             <input
@@ -57,6 +82,8 @@ function InformationCollection(props){
                             data-name="Website"
                             placeholder="Enter company website"
                             id="Website"
+                            value={webiste}
+                            onChange={e => setWebiste(e.target.value)}
                             required
                             />
                             <label htmlFor="Website-4">Write an about section</label>
@@ -67,6 +94,8 @@ function InformationCollection(props){
                             name="field"
                             className="claim-form text w-input"
                             defaultValue={""}
+                            value={about}
+                            onChange={e => setAbout(e.target.value)}
                             />
                             <label htmlFor="Business-phone">Business phone</label>
                             <input
@@ -78,6 +107,8 @@ function InformationCollection(props){
                             placeholder="Enter company website"
                             id="Business-phone"
                             required
+                            value={phone}
+                            onChange={e => setPhone(e.target.value)}
                             />
                             <label htmlFor="Website-7">Business email</label>
                             <input
@@ -89,6 +120,8 @@ function InformationCollection(props){
                             placeholder="Enter company website"
                             id="Website-3"
                             required
+                            value={email}
+                            onChange={e => setEmail(e.target.value)}
                             />
                             <label htmlFor="Mailing-Address">Business street address</label>
                             <input
@@ -99,6 +132,8 @@ function InformationCollection(props){
                             data-name="Mailing Address"
                             id="Mailing-Address"
                             required
+                            value={address}
+                            onChange={e => setAddress(e.target.value)}
                             />
                             <label htmlFor="City">Business city location</label>
                             <input
@@ -109,6 +144,8 @@ function InformationCollection(props){
                             data-name="City"
                             id="City"
                             required
+                            value={city}
+                            onChange={e => setCity(e.target.value)}
                             />
                             <label htmlFor="Zipcode-6">Business zipcode</label>
                             <input
@@ -119,6 +156,8 @@ function InformationCollection(props){
                             data-name="Zipcode"
                             id="Zipcode"
                             required
+                            value={zipcode}
+                            onChange={e => setZipcode(e.target.value)}
                             />
                         </div>
                         <div className="form-second-half">
@@ -131,7 +170,7 @@ function InformationCollection(props){
                             </div>
                             <div className="w-col w-col-1">
                                 <img
-                                src="../images/plus-circle.svg"
+                                src={plusCircle}
                                 width={30}
                                 data-w-id="6e3c0339-6cf5-1654-fe2e-7e5a777f4bae"
 
@@ -289,6 +328,8 @@ function InformationCollection(props){
                             data-name="Facebook link"
                             placeholder="Facebook  link"
                             id="Facebook-link"
+                            value={facebook}
+                            onChange={e => setFacebook(e.target.value)}
                             />
                             <label htmlFor="Twitter-link">Twitter link</label>
                             <input
@@ -299,6 +340,8 @@ function InformationCollection(props){
                             data-name="Twitter link"
                             placeholder="Twitter link"
                             id="Twitter-link"
+                            value={twitter}
+                            onChange={e => setTwitter(e.target.value)}
                             />
                             <label htmlFor="Instagram-link">Instagram link</label>
                             <input
@@ -309,6 +352,8 @@ function InformationCollection(props){
                             data-name="Instagram link"
                             placeholder="Instagram link"
                             id="Instagram-link"
+                            value={instagram}
+                            onChange={e => setInstagram(e.target.value)}
                             />
                         </div>
                         <div className="form-third-half">
@@ -363,11 +408,12 @@ function InformationCollection(props){
                     </div>
                 </div>
                 <div className="column-28 w-col w-col-4 w-col-small-small-stack">
-                    <img src="../images/mock.jpg" width={278} />
+                    <img src={mockup} width={278} />
                 </div>
                 </div>
             </div>
             </div>
+            </>
         )
 }
 export default InformationCollection;
