@@ -1,6 +1,25 @@
 import React from 'react';
-function Category(props){
+import Header from "../headerSimple";
+import Footer from "../footer";
+
+function CategoryView(props){
         return(
+            <>
+            <Header />
+            <div className="breadcrumbs">
+            <h1 className="breakcrumbs-heading">
+                <a href="../../conference/dashboard.html" className="link">
+                Settings
+                </a>
+            </h1>
+            <img
+                src="../../images/chevron-right.svg"
+                width={18}
+                
+                className="image-2"
+            />
+            <h1 className="breakcrumbs-heading current">Category</h1>
+            </div>
             <div className="body-wrapper-cat">
             <div className="b2b-container-category">
                 <div className="card">
@@ -486,6 +505,8 @@ function Category(props){
                 </div>
             </div>
             </div>
+            <Footer />
+            </>
         )
 }
-export default Category;
+export default CategoryView;

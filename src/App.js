@@ -14,7 +14,8 @@ import Purchase from "./components/dashboard/purchaseIndex";
 import Settings from "./components/dashboard/settingsIndex";
 import Password from "./components/profile/passwordIndex";
 import Account from "./components/profile/accountIndex";
-import Category from "./components/profile/categoryIndex";
+import CategoryView from "./components/category/view";
+import CategoryCreate from "./components/category/create";
 import Registration from "./components/login/registrationIndex";
 import ConferenceClaim from "./components/conferenceClaim";
 import SingIn from "./components/login/signin";
@@ -43,7 +44,8 @@ function App(props) {
             <Route exact path='/profile' component={Profile}></Route>
             <Route exact path='/password' component={Password}></Route>
             <Route exact path='/account' component={Account}></Route>
-            <Route exact path='/category' component={Category}></Route>
+            <Route exact path='/category' component={CategoryView}></Route>
+            <Route exact path='/category/add' component={CategoryCreate}></Route>
             <Route exact path='/claim' component={ConferenceClaim}></Route>
             <Route exact path='/onboarding/checklist' component={CheckList}></Route>
             <Route exact path='/onboarding/eventlocation' component={EventLocation}></Route>
