@@ -35,6 +35,7 @@ export default function SignIn(props){
   }
   return(
       <>
+      <HeaderSimple />
         <div className="body-wrapper log-in">
           <div className="access-container w-container">
             <div className="card sign-up">
@@ -42,6 +43,7 @@ export default function SignIn(props){
               <div className="">
                 <div className="">
                   <form onSubmit={handleSubmit}>
+                  
                     <div className="">
                       <label className="email-label">Username</label>
                       {/*<input type="text" value={username} onChange={event => setUsername(event.target.value)} className="user-email w-input" max={256} name="username" placeholder="Username" />*/}
@@ -66,12 +68,14 @@ export default function SignIn(props){
                     <div>
                       <input type="submit" value="Sign Up" className="w-button"/>
                     </div>
+                    {isError && <p> Username and password does not Match </p>}
                   </form>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        <Footer />
       </>
   )
 }

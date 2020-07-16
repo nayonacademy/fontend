@@ -13,7 +13,7 @@ function CategoryCreate(props){
   
     const handleSubmit = (evt) => {
       evt.preventDefault();
-      axios.post(API_URL+"/api/jwtauth/token/", {
+      axios.post(API_URL+"/api/category/list/", {
         name
       }).then(result => {
         if (result.status === 200) {

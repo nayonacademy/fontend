@@ -6,7 +6,7 @@ function Conferences(props){
   useEffect(()=>{
     const GetData = async () =>{
       const result = await axios(API_URL+'/api/claim/list/');
-      setData(result.data);
+      setData(result.data.results);
     };
     GetData();
   },[]);
@@ -29,7 +29,6 @@ function Conferences(props){
               </div>
             </div>
               {data.map(function(item, i){
-              console.log(item.conference_name);
               return <div data-w-id="86ee10ea-5d7b-e500-d866-67b9256afbe6" className="list-item-container i">
                 <div className="list-item-button">
                   <div className="key-col w-row">
