@@ -13,7 +13,6 @@ function CategoryCreate(props){
   
     const handleSubmit = (evt) => {
       evt.preventDefault();
-      console.log(name);
       axios.post(API_URL+"/api/category/list/", {
         name
       }).then(result => {

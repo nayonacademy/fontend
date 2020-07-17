@@ -21,26 +21,40 @@ function InformationCollection(props){
     const [facebook, setFacebook] = useState("");
     const [twitter, setTwitter] = useState("");
     const [instagram, setInstagram] = useState("");
-    const [orgId, setOrgId] = useState("");
+    const [orgId, setOrgId] = useState("1");
+    const [speakers, setSpeakers] = useState("speakers");
+    const [locations, setLocations] = useState("locations");
+    const [user, setUser] = useState("user");
+    const [category, setCategory] = useState("category");
     const { setAuthTokens } = useAuth();
 
     const handleSubmit = (evt) => {
         evt.preventDefault();
         console.log("results :: ",displayName, webiste, about, phone, email, address, city, zipcode, facebook, twitter, instagram);
         
-        // axios.post(API_URL+"/api/jwtauth/token/", {
-        //     // username,
-        //     // password
-        // }).then(result => {
-        //     if (result.status === 200) {
-        //         setAuthTokens(result.data);
-        //         setLoggedIn(true);
-        //     } else {
-        //         setIsError(true);
-        //     }
-        // }).catch(e => {
-        //     setIsError(true);
-        // });
+        axios.post(API_URL+"/api/conference/list/", {
+            displayName,
+            webiste,
+            about,
+            phone,
+            email,
+            address,
+            city,
+            zipcode,
+            speakers,
+            facebook,
+            twitter,
+            instagram,
+            orgId,
+            locations,
+            user,
+            category,
+
+        }).then(result => {
+            console.log(result);
+        }).catch(e => {
+            setIsError(true);
+        });
 
     }
         return(
