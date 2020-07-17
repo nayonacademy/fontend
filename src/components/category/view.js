@@ -1,8 +1,19 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Header from "../headerSimple";
 import Footer from "../footer";
+import axios from "axios";
+const API_URL = process.env.REACT_APP_API_URL;
 
 function CategoryView(props){
+    const [data, setData] = useState([]);
+    useEffect(()=>{
+      const GetData = async () =>{
+        const result = await axios(API_URL+'/api/claim/list/');
+        setData(result.data);
+      };
+      GetData();
+    },[]);
+
         return(
             <>
             <Header />

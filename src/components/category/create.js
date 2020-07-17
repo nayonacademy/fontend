@@ -13,17 +13,13 @@ function CategoryCreate(props){
   
     const handleSubmit = (evt) => {
       evt.preventDefault();
-      axios.post(API_URL+"/api/jwtauth/token/", {
+      console.log(name);
+      axios.post(API_URL+"/api/category/list/", {
         name
       }).then(result => {
-        if (result.status === 200) {
-          setAuthTokens(result.data);
-          setLoggedIn(true);
-        } else {
-          setIsError(true);
-        }
+        console.log(result);
       }).catch(e => {
-        setIsError(true);
+
       });
   
     }
