@@ -16,7 +16,11 @@ function CategoryCreate(props){
       axios.post(API_URL+"/api/category/list/", {
         name
       }).then(result => {
-        console.log(result);
+
+        if (result.status === 201) {
+          console.log(result);
+          window.location.href = "/category";
+      }
       }).catch(e => {
 
       });
