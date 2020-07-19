@@ -1,4 +1,6 @@
 import React, {useState} from 'react';
+import Header from "../headerSimple";
+import Footer from "../footer";
 import axios from "axios";
 import { Link, Redirect } from "react-router-dom";
 import { useAuth } from "../../context/auth";
@@ -7,22 +9,23 @@ import plusCircle from "../../img/plus-circle.svg";
 import chevronRight from "../../img/chevron-right.svg"
 const API_URL = process.env.REACT_APP_API_URL;
 
-function InformationCollection(props){
+
+function ConferenceCreate(props){
     const [isLoggedIn, setLoggedIn] = useState(false);
     const [isError, setIsError] = useState(false);
-    const [displayName, setdisplayName] = useState("");
-    const [webiste, setWebiste] = useState("");
+    const [name, setName] = useState("");
+    const [website, setWebiste] = useState("");
     const [about, setAbout] = useState("");
     const [phone, setPhone] = useState("");
     const [email, setEmail] = useState("");
     const [address, setAddress] = useState("");
     const [city, setCity] = useState("");
-    const [zipcode, setZipcode] = useState("");
+    const [zipCode, setZipcode] = useState("");
+    const [speakers, setspeakers] = useState("Speakers");
     const [facebook, setFacebook] = useState("");
     const [twitter, setTwitter] = useState("");
     const [instagram, setInstagram] = useState("");
-    const [orgId, setOrgId] = useState("1");
-    const [speakers, setSpeakers] = useState("speakers");
+    const [organizerID, setorganizerID] = useState("1");
     const [locations, setLocations] = useState("locations");
     const [user, setUser] = useState(1);
     const [category, setCategory] = useState(1);
@@ -30,25 +33,25 @@ function InformationCollection(props){
 
     const handleSubmit = (evt) => {
         evt.preventDefault();
-        console.log("results :: ",displayName, webiste, about, phone, email, address, city, zipcode, facebook, twitter, instagram);
+        console.log("results :: ",name, website, about, phone, email, address, city, zipCode, facebook, twitter, instagram);
         
         axios.post(API_URL+"/api/conference/list/", {
-            displayName,
-            webiste,
+            name,
+            website,
             about,
             phone,
             email,
             address,
             city,
-            zipcode,
+            zipCode,
             speakers,
             facebook,
             twitter,
             instagram,
-            orgId,
+            organizerID,
             locations,
             user,
-            category,
+            category
 
         }).then(result => {
             console.log(result);
@@ -60,6 +63,7 @@ function InformationCollection(props){
     }
         return(
             <>
+            <Header />
             <div className="breadcrumbs">
                 <h1 className="breakcrumbs-heading">Settings</h1><img src={chevronRight} width="18"
                                                                       alt="" className="image-2"/>
@@ -74,13 +78,13 @@ function InformationCollection(props){
                         <form id="email-form" name="email-form" data-name="Email Form" className="form-information w-clearfix" onSubmit={handleSubmit}>
                         <div className="form-first-half">
                             <label htmlFor="Profile-name">Display name</label>
-                            <input type="text" className="claim-form w-input" maxLength={256} name="name" data-name="Profile name" placeholder="Enter your conference name" id="Profile-name" value={displayName} onChange={e => setdisplayName(e.target.value)}
+                            <input type="text" className="claim-form w-input" maxLength={256} name="name" data-name="Profile name" placeholder="Enter your conference name" id="Profile-name" value={name} onChange={e => setName(e.target.value)}
                             />
                             <label htmlFor="Website">Company website</label>
-                            <input type="text" className="claim-form w-input" maxLength={256} name="website" data-name="Website" placeholder="Enter company website" id="Website" value={webiste} onChange={e => setWebiste(e.target.value)} required
+                            <input type="text" className="claim-form w-input" maxLength={256} name="website" data-name="Website" placeholder="Enter company website" id="Website" value={website} onChange={e => setWebiste(e.target.value)} required
                             />
                             <label htmlFor="Website-4">Write an about section</label>
-                            <textarea placeholder="Let people know what you're about." maxLength={5000} id="field" name="field" className="claim-form text w-input" defaultValue={""} value={about} onChange={e => setAbout(e.target.value)}
+                            <textarea placeholder="Let people know what you're about." maxLength={5000} id="field" name="about" className="claim-form text w-input" defaultValue={""} value={about} onChange={e => setAbout(e.target.value)}
                             />
                             <label htmlFor="Business-phone">Business phone</label>
                             <input type="text" className="claim-form w-input" maxLength={256} name="Business-phone" data-name="Business phone" placeholder="Enter company website" id="Business-phone" required value={phone} onChange={e => setPhone(e.target.value)}
@@ -95,7 +99,7 @@ function InformationCollection(props){
                             <input type="text" className="claim-form w-input" maxLength={256} name="City" data-name="City" id="City" required value={city} onChange={e => setCity(e.target.value)}
                             />
                             <label htmlFor="Zipcode-6">Business zipcode</label>
-                            <input type="text" className="claim-form w-input" maxLength={256} name="Zipcode" data-name="Zipcode" id="Zipcode" required value={zipcode} onChange={e => setZipcode(e.target.value)}
+                            <input type="text" className="claim-form w-input" maxLength={256} name="zipCode" data-name="Zipcode" id="Zipcode" required value={zipCode} onChange={e => setZipcode(e.target.value)}
                             />
                         </div>
                         <div className="form-second-half">
@@ -217,14 +221,7 @@ function InformationCollection(props){
                             If you have an organization ID from any of the listed
                             affiliates below, please enter it below.{" "}
                             </p>
-                            <input
-                            type="text"
-                            className="claim-form w-input"
-                            maxLength={256}
-                            name="Organization-ID"
-                            data-name="Organization ID"
-                            placeholder="Organization ID"
-                            id="Organization-ID"
+                            <input type="text" className="claim-form w-input" maxLength={256} name="organizerID" placeholder="organizerID" value={organizerID} onChange={e => setorganizerID(e.target.value)}
                             />
                         </div>
                         <input type="submit" defaultValue="Next" data-wait="Please wait..." className="submit-button-4 w-button"
@@ -245,7 +242,8 @@ function InformationCollection(props){
                 </div>
             </div>
             </div>
+            <Footer />
             </>
         )
 }
-export default InformationCollection;
+export default ConferenceCreate;

@@ -19,7 +19,7 @@ function Settings(props){
                     <div className="con title user">
                     <h1 className="heading title user">Settings</h1>
                     <h1 className="heading sub user">Change your account settings.</h1>
-                        <p><a href="/onboarding/information/collection">Account Information</a></p>
+                        <p><a href="/conference/add">Account Information</a></p>
                     </div>
                 </div>
                 <div className="container-template w-container">

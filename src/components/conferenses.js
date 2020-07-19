@@ -5,7 +5,7 @@ function Conferences(props){
   const [data, setData] = useState([]);
   useEffect(()=>{
     const GetData = async () =>{
-      const result = await axios(API_URL+'/api/claim/list/');
+      const result = await axios(API_URL+'/api/conference/list/');
       setData(result.data.results);
     };
     GetData();
@@ -36,7 +36,7 @@ function Conferences(props){
                       <div className="rank">#{i}</div>
                     </div>
                     <div className="key-name-col w-col w-col-3">
-                      <div className="name">{item.conference_name}</div>
+                      <div className="name">{item.name}</div>
                     </div>
                     <div className="key-rating-col w-col w-col-3">
                       <div className="rating"><strong className="current_star global"></strong></div>

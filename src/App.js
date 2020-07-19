@@ -9,7 +9,8 @@ import Dashboard from "./components/dashboard/index";
 import Profile from "./components/profile/index";
 import CheckList from "./components/onboarding/checkListIndex";
 import EventLocation from "./components/onboarding/eventLocatoinIndex";
-import InformationCollection from "./components/onboarding/informationCollectionIndex";
+import ConferenceCreate from "./components/conference/create";
+import ConferenceView from "./components/conference/view";
 import Purchase from "./components/dashboard/purchaseIndex";
 import Settings from "./components/dashboard/settingsIndex";
 import Password from "./components/profile/passwordIndex";
@@ -49,7 +50,9 @@ function App(props) {
             <Route exact path='/claim' component={ConferenceClaim}></Route>
             <Route exact path='/onboarding/checklist' component={CheckList}></Route>
             <Route exact path='/onboarding/eventlocation' component={EventLocation}></Route>
-            <Route exact path='/onboarding/information/collection' component={InformationCollection}></Route>
+            <Route exact path='/conference/add' component={ConferenceCreate}></Route>
+            <Route exact path='/conference' component={ConferenceView}></Route>
+            
           </div>
         </Router>
        </AuthContext.Provider>
