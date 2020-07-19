@@ -24,8 +24,8 @@ function InformationCollection(props){
     const [orgId, setOrgId] = useState("1");
     const [speakers, setSpeakers] = useState("speakers");
     const [locations, setLocations] = useState("locations");
-    const [user, setUser] = useState("user");
-    const [category, setCategory] = useState("category");
+    const [user, setUser] = useState(1);
+    const [category, setCategory] = useState(1);
     const { setAuthTokens } = useAuth();
 
     const handleSubmit = (evt) => {
@@ -53,6 +53,7 @@ function InformationCollection(props){
         }).then(result => {
             console.log(result);
         }).catch(e => {
+            console.log(e);
             setIsError(true);
         });
 
@@ -73,10 +74,10 @@ function InformationCollection(props){
                         <form id="email-form" name="email-form" data-name="Email Form" className="form-information w-clearfix" onSubmit={handleSubmit}>
                         <div className="form-first-half">
                             <label htmlFor="Profile-name">Display name</label>
-                            <input type="text" className="claim-form w-input" maxLength={256} name="Profile-name" data-name="Profile name" placeholder="Enter your conference name" id="Profile-name" value={displayName} onChange={e => setdisplayName(e.target.value)}
+                            <input type="text" className="claim-form w-input" maxLength={256} name="name" data-name="Profile name" placeholder="Enter your conference name" id="Profile-name" value={displayName} onChange={e => setdisplayName(e.target.value)}
                             />
                             <label htmlFor="Website">Company website</label>
-                            <input type="text" className="claim-form w-input" maxLength={256} name="Website" data-name="Website" placeholder="Enter company website" id="Website" value={webiste} onChange={e => setWebiste(e.target.value)} required
+                            <input type="text" className="claim-form w-input" maxLength={256} name="website" data-name="Website" placeholder="Enter company website" id="Website" value={webiste} onChange={e => setWebiste(e.target.value)} required
                             />
                             <label htmlFor="Website-4">Write an about section</label>
                             <textarea placeholder="Let people know what you're about." maxLength={5000} id="field" name="field" className="claim-form text w-input" defaultValue={""} value={about} onChange={e => setAbout(e.target.value)}

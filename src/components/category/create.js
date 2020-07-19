@@ -16,12 +16,10 @@ function CategoryCreate(props){
       axios.post(API_URL+"/api/category/list/", {
         name
       }).then(result => {
-        if (result.status === 200) {
-          setAuthTokens(result.data);
-          setLoggedIn(true);
-        } else {
-          setIsError(true);
-        }
+        if (result.status === 201) {
+          console.log(result);
+          window.location.href = "/category";
+      }
       }).catch(e => {
         setIsError(true);
       });
