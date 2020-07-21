@@ -40,18 +40,18 @@ function App(props) {
             <Route path='/test' component={SignInTest}></Route>
             <Route exact path='/registration' component={Registration}></Route>
             <PrivateRoute exact path='/dashboard' component={Dashboard}></PrivateRoute>
-            <Route exact path='/purchase' component={Purchase}></Route>
-            <Route exact path='/settings' component={Settings}></Route>
-            <Route exact path='/profile' component={Profile}></Route>
-            <Route exact path='/password' component={Password}></Route>
-            <Route exact path='/account' component={Account}></Route>
-            <Route exact path='/category' component={CategoryView}></Route>
-            <Route exact path='/category/add' component={CategoryCreate}></Route>
-            <Route exact path='/claim' component={ConferenceClaim}></Route>
-            <Route exact path='/onboarding/checklist' component={CheckList}></Route>
-            <Route exact path='/onboarding/eventlocation' component={EventLocation}></Route>
-            <Route exact path='/conference/add' component={ConferenceCreate}></Route>
-            <Route exact path='/conference' component={ConferenceView}></Route>
+            <PrivateRoute exact path='/purchase' component={Purchase}></PrivateRoute>
+            <PrivateRoute exact path='/settings' component={Settings}></PrivateRoute>
+            <PrivateRoute exact path='/profile' component={Profile}></PrivateRoute>
+            <PrivateRoute exact path='/password' component={Password}></PrivateRoute>
+            <PrivateRoute exact path='/account' component={Account}></PrivateRoute>
+            <PrivateRoute exact path='/category' component={CategoryView}></PrivateRoute>
+            <PrivateRoute exact path='/category/add' component={CategoryCreate}></PrivateRoute>
+            <PrivateRoute exact path='/claim' component={ConferenceClaim}></PrivateRoute>
+            <PrivateRoute exact path='/onboarding/checklist' component={CheckList}></PrivateRoute>
+            <PrivateRoute exact path='/onboarding/eventlocation' component={EventLocation}></PrivateRoute>
+            <PrivateRoute exact path='/conference/add' component={ConferenceCreate}></PrivateRoute>
+            <PrivateRoute exact path='/conference' component={ConferenceView}></PrivateRoute>
             
           </div>
         </Router>

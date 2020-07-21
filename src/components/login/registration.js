@@ -37,7 +37,6 @@ class Registration extends React.Component {
       let password2= this.state.password2;
 
     let user = JSON.stringify(users)
-    console.log("all data",users);
 // POST data
     let response = axios.post(API_URL+"/api/jwtauth/register/", {
       username,

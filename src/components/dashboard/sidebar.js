@@ -4,6 +4,7 @@ function DashboardSidebar(props) {
     const { setAuthTokens } = useAuth();
     function logOut() {
         setAuthTokens();
+        window.localStorage.clear();
     }
         return(
             <div className="menu-container">

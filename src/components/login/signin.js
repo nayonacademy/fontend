@@ -20,8 +20,10 @@ export default function SignIn(props){
       password
     }).then(result => {
       if (result.status === 200) {
+        console.log(result.data.access)
         setAuthTokens(result.data);
         setLoggedIn(true);
+        localStorage.setItem('token', result.data.access);
       } else {
         setIsError(true);
       }
@@ -36,7 +38,7 @@ export default function SignIn(props){
   return(
       <>
       <HeaderSimple />
-        <div className="body-wrapper log-in">
+        <div className="body-wrapper-business-login body-wrapper log-in">
           <div className="access-container w-container">
             <div className="card sign-up">
               <h1 className="heading login">Login to read and write reviews for your favorite conferences. </h1>
@@ -75,6 +77,7 @@ export default function SignIn(props){
             </div>
           </div>
         </div>
+
         <Footer />
       </>
   )
