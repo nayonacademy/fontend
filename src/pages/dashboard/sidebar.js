@@ -4,8 +4,9 @@ function DashboardSidebar(props) {
     const { setAuthTokens } = useAuth();
     function logOut() {
         setAuthTokens();
-        window.localStorage.clear();
+        localStorage.removeItem('x-access-token');
     }
+    
         return(
             <div className="menu-container">
             <div className="logo">

@@ -1,41 +1,30 @@
-import React, {useState} from 'react';
+import React, {Component} from 'react';
+import { login } from './../components/repository';
 import HeaderSimple from '../headerSimple';
 import Footer from "../footer";
-import axios from "axios";
-import { Link, Redirect } from "react-router-dom";
-import { useAuth } from "../../context/auth";
-const API_URL = process.env.REACT_APP_API_URL;
 
-export default function SignIn(props){
-  const [isLoggedIn, setLoggedIn] = useState(false);
-  const [isError, setIsError] = useState(false);
-  const [username, setUserName] = useState("");
-  const [password, setPassword] = useState("");
-  const { setAuthTokens } = useAuth();
-
-  const handleSubmit = (evt) => {
-    evt.preventDefault();
-    axios.post(API_URL+"/api/jwtauth/token/", {
-      username,
-      password
-    }).then(result => {
-      if (result.status === 200) {
-        console.log(result.data.access)
-        setAuthTokens(result.data);
-        setLoggedIn(true);
-        localStorage.setItem('token', result.data.access);
-      } else {
-        setIsError(true);
-      }
-    }).catch(e => {
-      setIsError(true);
-    });
-
+class SignIn extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { name: '', password: '' };
+    this.handleInputChange =this.handleInputChange.bind(this);
+    this.submitLogin =this.submitLogin.bind(this);
   }
-  if (isLoggedIn) {
-    return <Redirect to="/dashboard" />;
+
+  handleInputChange(event) {
+    this.setState({[event.target.name]: event.target.value})
   }
-  return(
+
+  submitLogin(event){
+    event.preventDefault();
+    login(this.state)
+        .then(token => this.props.history.push('/dashboard'))
+        .catch(err => document.getElementById("loginErr").innerHTML= "<div className='alert alert-danger'>" + err + "</div>");
+  }
+
+  render() {
+    return (
+
       <>
       <HeaderSimple />
         <div className="body-wrapper-business-login body-wrapper log-in">
@@ -44,15 +33,14 @@ export default function SignIn(props){
               <h1 className="heading login">Login to read and write reviews for your favorite conferences. </h1>
               <div className="">
                 <div className="">
-                  <form onSubmit={handleSubmit}>
+                  <form onSubmit={this.submitLogin}>
                   
                     <div className="">
                       <label className="email-label">Username</label>
                       {/*<input type="text" value={username} onChange={event => setUsername(event.target.value)} className="user-email w-input" max={256} name="username" placeholder="Username" />*/}
                       <input
                           type="text"
-                          value={username}
-                          onChange={e => setUserName(e.target.value)}
+                          onChange={this.handleInputChange}
                           className="user-email w-input" max={256}
                           placeholder="Username"
                       />
@@ -61,8 +49,7 @@ export default function SignIn(props){
                       <label className="user-name-label">Password </label>
                       <input
                           type="password"
-                          value={password}
-                          onChange={e => setPassword(e.target.value)}
+                          onChange={this.handleInputChange}
                           className="user-email w-input" max={256}
                           placeholder="Password"
                       />
@@ -70,7 +57,7 @@ export default function SignIn(props){
                     <div>
                       <input type="submit" value="Sign Up" className="w-button"/>
                     </div>
-                    {isError && <p> Username and password does not Match </p>}
+                    <div id="loginErr"></div>
                   </form>
                 </div>
               </div>
@@ -80,5 +67,7 @@ export default function SignIn(props){
 
         <Footer />
       </>
-  )
+    );
+  }
 }
+export default SignIn;
