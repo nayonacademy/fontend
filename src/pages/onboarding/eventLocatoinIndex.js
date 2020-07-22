@@ -1,6 +1,6 @@
 import React from 'react';
-import Header from "../headerSimple";
-import Footer from "../footer";
+import Header from "../HeaderSimple";
+import Footer from "../Footer";
 import EnentLocation from "./EventLocation";
 function EventLocationIndex(props){
         return(

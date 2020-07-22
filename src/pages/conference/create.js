@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
-import Header from "../headerSimple";
-import Footer from "../footer";
+import Header from "../HeaderSimple";
+import Footer from "../Footer";
 import axios from "axios";
-import { Link, Redirect } from "react-router-dom";
 import { useAuth } from "../../context/auth";
 import mockup from '../../img/mock.jpg';
 import plusCircle from "../../img/plus-circle.svg";

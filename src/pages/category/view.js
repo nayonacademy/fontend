@@ -1,6 +1,6 @@
 import React, {useState,useEffect} from 'react';
-import Header from "../headerSimple";
-import Footer from "../footer";
+import Header from "../HeaderSimple";
+import Footer from "../Footer";
 import axios from "axios";
 import Layout from "../Layouts";
 const API_URL = process.env.REACT_APP_API_URL;

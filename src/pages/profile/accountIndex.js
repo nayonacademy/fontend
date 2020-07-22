@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from "../headerSimple";
-import Footer from "../footer";
-import Account from "./accountInformation";
+import Header from "../HeaderSimple";
+import Footer from "../Footer";
+import Account from "./AccountInformation";
 function AccountIndex(props){
         return(
             <>

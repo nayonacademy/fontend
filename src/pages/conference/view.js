@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import Header from "../headerSimple";
-import Footer from "../footer";
+import Header from "../HeaderSimple";
+import Footer from "../Footer";
 import axios from "axios";
 import { Link, Redirect } from "react-router-dom";
 import { useAuth } from "../../context/auth";
