@@ -1,7 +1,7 @@
 import React from 'react';
-import TopNav from "./header";
-import Sidebar from "./sidebar";
-import Settings from "./settings";
+import TopNav from "./Header";
+import Sidebar from "./Sidebar";
+import Settings from "./Settings";
 function SettingsIndex(props){
         return(
 

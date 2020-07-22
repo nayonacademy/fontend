@@ -1,17 +1,20 @@
 import React from 'react';
-import TopNav from "../dashboard/header";
-import Sidebar from "../dashboard/sidebar";
-import Container from "../dashboard/container";
+import TopNav from "../dashboard/Header";
+import Sidebar from "../dashboard/Sidebar";
+import Layout from "../Layouts";
+
 function CategoryUpdate(props){
         return(
-            <div className="bodycontainer">
-            <Sidebar />
-            <div className="body-content-container">
-            <TopNav />
-            {/* <Container /> */}
-            <h1>Hello create</h1>  
-            </div>
-            </div>
+            <Layout>
+                <div className="bodycontainer">
+                <Sidebar />
+                <div className="body-content-container">
+                <TopNav />
+                {/* <Container /> */}
+                <h1>Hello create</h1>  
+                </div>
+                </div>
+            </Layout>
         )
 }
 export default CategoryUpdate;

@@ -13,7 +13,7 @@ function ConferenceClaim(props){
     const [city, setCity] = useState("");
     const [state, setState] = useState("");
     const [zipcode, setZipcode] = useState("");
-    console.log("load");
+
     const handleSubmit = (evt) => {
         evt.preventDefault();
         console.log("hello", fullname, email, website, conference_name, street_address, city, state, zipcode);

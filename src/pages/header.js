@@ -20,8 +20,6 @@ function Header(props){
                 <input type="search" className="search-input w-input" name="query" placeholder="Search for conferences..." id="search" />
                 <input type="submit" value="Find!" className="search-button w-button"/>
             </form>
-
-
             <div data-w-id="587b6506-c262-f95b-af7b-0542f628f541" className="refine-search-button">
                 <div className="refine-text">Refine your search</div>
                 <img src="images/more-horizontal-1.svg" alt="" className="more-img"/>

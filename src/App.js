@@ -1,27 +1,24 @@
 import './App.css';
 import React, { useState } from "react";
 import { BrowserRouter as Router, Link, Route } from "react-router-dom";
-import PrivateRoute from './PrivateRoute';
 import { AuthContext } from "./context/auth";
-import Home from "./pages/home";
-import Login from "./pages/login/loginIndex";
-import Dashboard from "./pages/dashboard/index";
+import Home from "./pages/Home";
+import Login from "./pages/login/Login";
+import Dashboard from "./pages/dashboard/Dashboard";
 import Profile from "./pages/profile/index";
-import CheckList from "./pages/onboarding/checkListIndex";
-import EventLocation from "./pages/onboarding/eventLocatoinIndex";
-import ConferenceCreate from "./pages/conference/create";
-import ConferenceView from "./pages/conference/view";
-import Purchase from "./pages/dashboard/purchaseIndex";
-import Settings from "./pages/dashboard/settingsIndex";
+import CheckList from "./pages/onboarding/CheckListIndex";
+import EventLocation from "./pages/onboarding/EventLocatoinIndex";
+import ConferenceCreate from "./pages/conference/Create";
+import ConferenceView from "./pages/conference/View";
+import Purchase from "./pages/purchase/purchaseIndex";
+import Settings from "./pages/dashboard/SettingsIndex";
 import Password from "./pages/profile/passwordIndex";
 import Account from "./pages/profile/accountIndex";
-import CategoryView from "./pages/category/view";
-import CategoryCreate from "./pages/category/create";
-import Registration from "./pages/login/registrationIndex";
-import ConferenceClaim from "./pages/conferenceClaim";
+import CategoryView from "./pages/category/View";
+import CategoryCreate from "./pages/category/Create";
+import SignUp from "./pages/login/Signup";
+import ConferenceClaim from "./pages/ConferenceClaim";
 import SingIn from "./pages/login/signin";
-import SignInTest from "./pages/login/signinTest";
-import { Provider } from 'react-redux';
 // import store from './store';
 
 function App(props) {
@@ -39,22 +36,20 @@ function App(props) {
             <Route exact path='/' component={Home}></Route>
             <Route exact path='/login' component={Login}></Route>
             <Route path='/signin' component={SingIn}></Route>
-            <Route path='/test' component={SignInTest}></Route>
-            <Route exact path='/registration' component={Registration}></Route>
-            <PrivateRoute exact path='/dashboard' component={Dashboard}></PrivateRoute>
-            <PrivateRoute exact path='/purchase' component={Purchase}></PrivateRoute>
-            <PrivateRoute exact path='/settings' component={Settings}></PrivateRoute>
-            <PrivateRoute exact path='/profile' component={Profile}></PrivateRoute>
-            <PrivateRoute exact path='/password' component={Password}></PrivateRoute>
-            <PrivateRoute exact path='/account' component={Account}></PrivateRoute>
-            <PrivateRoute exact path='/category' component={CategoryView}></PrivateRoute>
-            <PrivateRoute exact path='/category/add' component={CategoryCreate}></PrivateRoute>
-            <PrivateRoute exact path='/claim' component={ConferenceClaim}></PrivateRoute>
-            <PrivateRoute exact path='/onboarding/checklist' component={CheckList}></PrivateRoute>
-            <PrivateRoute exact path='/onboarding/eventlocation' component={EventLocation}></PrivateRoute>
-            <PrivateRoute exact path='/conference/add' component={ConferenceCreate}></PrivateRoute>
-            <PrivateRoute exact path='/conference' component={ConferenceView}></PrivateRoute>
-            
+            <Route exact path='/signup' component={SignUp}></Route>
+            <Route exact path='/dashboard' component={Dashboard}></Route>
+            <Route exact path='/purchase' component={Purchase}></Route>
+            <Route exact path='/settings' component={Settings}></Route>
+            <Route exact path='/profile' component={Profile}></Route>
+            <Route exact path='/password' component={Password}></Route>
+            <Route exact path='/account' component={Account}></Route>
+            <Route exact path='/category' component={CategoryView}></Route>
+            <Route exact path='/category/add' component={CategoryCreate}></Route>
+            <Route exact path='/claim' component={ConferenceClaim}></Route>
+            <Route exact path='/onboarding/checklist' component={CheckList}></Route>
+            <Route exact path='/onboarding/eventlocation' component={EventLocation}></Route>
+            <Route exact path='/conference/add' component={ConferenceCreate}></Route>
+            <Route exact path='/conference' component={ConferenceView}></Route>
           </div>
         </Router>
        </AuthContext.Provider>

@@ -1,7 +1,11 @@
 import React from 'react';
+import HeaderSimple from "../HeaderSimple";
+import Footer from "../Footer";
+
 function Login(props){
         return(
           <>
+          <HeaderSimple />
             <div className="body-wrapper log-in">
             <div className="access-container w-container">
               <div className="card sign-up">
@@ -9,7 +13,7 @@ function Login(props){
                 <div className="access-button-container">
                     <a href="#" className="facebook-signin-button w-button">Continue with Facebook</a><a href="#" className="linkedin-signin-button w-button">Continue with LinkedIn</a></div>
                 <div className="proceed-with-email-container">
-                  <a href="/registration" data-w-id="d8e8b6c1-1bc7-fd1a-37a3-9216eab18dd3" className="continue-with-email-instead">Registration with email</a>
+                  <a href="/signup" data-w-id="d8e8b6c1-1bc7-fd1a-37a3-9216eab18dd3" className="continue-with-email-instead">Registration with email</a>
                     <a href="/signin" data-w-id="d8e8b6c1-1bc7-fd1a-37a3-9216eab18dd3" className="continue-with-email-instead">SignIn with email</a>
                 </div>
                 <div className="data-collection">
@@ -56,6 +60,7 @@ function Login(props){
               </div>
             </div>
           </div>
+          <Footer />
           </>
         )
 }

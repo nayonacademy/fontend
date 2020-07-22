@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
-import TopNav from "../dashboard/header";
-import Sidebar from "../dashboard/sidebar";
-import Container from "../dashboard/container";
+import TopNav from "../dashboard/Header";
+import Sidebar from "../dashboard/Sidebar";
 import axios from "axios";
 import { useAuth } from "../../context/auth";
+import Layout from "../Layouts";
 const API_URL = process.env.REACT_APP_API_URL;
+
 function CategoryCreate(props){
     const [isLoggedIn, setLoggedIn] = useState(false);
     const [isError, setIsError] = useState(false);
@@ -27,6 +28,7 @@ function CategoryCreate(props){
   
     }
         return(
+            <Layout>
             <div className="bodycontainer">
             <Sidebar />
             <div className="body-content-container">
@@ -61,6 +63,7 @@ function CategoryCreate(props){
                 </div>
             </div>
             </div>
+            </Layout>
         )
 }
 export default CategoryCreate;

@@ -1,6 +1,11 @@
 import React from 'react';
+import Header from "../HeaderSimple";
+import Footer from "../Footer";
+
 function Password(props){
         return(
+          <>
+          <Header />
             <div className="body-wrapper">
             <div className="b2b-container-onboarding">
               <div className="onboarding-progress">
@@ -88,7 +93,8 @@ function Password(props){
               </div>
             </div>
           </div>
-                
+          <Footer />
+          </> 
         )
 }
 export default Password;

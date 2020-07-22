@@ -7,6 +7,7 @@ import { useAuth } from "../../context/auth";
 import mockup from '../../img/mock.jpg';
 import plusCircle from "../../img/plus-circle.svg";
 import chevronRight from "../../img/chevron-right.svg"
+import Layout from "../Layouts";
 const API_URL = process.env.REACT_APP_API_URL;
 
 function ConferenceView(props){
@@ -21,7 +22,7 @@ function ConferenceView(props){
     },[]);
 
         return(
-            <>
+            <Layout>
             <Header />
               <div className="id-rating-section">
                 <div className="conference-heading-container w-row">
@@ -1375,10 +1376,8 @@ function ConferenceView(props){
                 </div>
                 </div>
             </div>
-
-
             <Footer />
-            </>
+            </Layout>
         )
 }
 export default ConferenceView;

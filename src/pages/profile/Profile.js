@@ -1,6 +1,10 @@
 import React from 'react';
-function ProfileDetails(props){
+import Header from "../headerSimple";
+import Footer from "../footer";
+function Profile(props){
         return(
+          <>
+          <Header />
             <div className="user-template-wrapper user">
             <div className="section public">
               <div className="container-template w-container">
@@ -379,7 +383,9 @@ function ProfileDetails(props){
                     <div className="helpful-text-span">Do you like this photo?</div><img src="../images/heart_correct.svg" data-w-id="4109f857-a1ed-8bc7-76d3-c28b3cc87b9d" alt="" className="heart-favorites"/></div><img src="../images/flag.svg" width="19" data-w-id="4109f857-a1ed-8bc7-76d3-c28b3cc87b9e" alt="" className="flag"/></div>
               </div>
             </div>
-          </div>        
+          </div>       
+          <Footer />
+          </> 
         )
 }
-export default ProfileDetails;
+export default Profile;

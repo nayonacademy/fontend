@@ -1,9 +1,7 @@
 import React from 'react';
-import { useAuth } from "../../context/auth";
+
 function DashboardSidebar(props) {
-    const { setAuthTokens } = useAuth();
     function logOut() {
-        setAuthTokens();
         localStorage.removeItem('x-access-token');
     }
     
@@ -13,7 +11,7 @@ function DashboardSidebar(props) {
                 <h1 className="heading dashboard">ConferenceRanker</h1>
             </div>
             <div className="store-navigation">
-                <a href="#" onClick={logOut} className="store-name admin">Logout</a>
+                <a href="/login" onClick={logOut} className="store-name admin">Logout</a>
                 <div className="store-name store">Need to contact us? </div>
             </div>
             <div className="card">

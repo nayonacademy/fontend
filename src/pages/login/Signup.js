@@ -1,50 +1,31 @@
 import React from 'react';
 import HeaderSimple from '../headerSimple';
 import Footer from "../footer";
-import axios from "axios"; 
-import { NavLink } from 'react-router-dom'
-const API_URL = process.env.REACT_APP_API_URL;
-class Registration extends React.Component {
+import { register } from '../../components/repository';
 
+class SignUp extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      email: "",
-      password: ""
-    }
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.state = { name: '', email: '', password: '', password2: '' };
+    this.handleInputChange =this.handleInputChange.bind(this);
+    this.submitRegistration =this.submitRegistration.bind(this);
   }
 
-  handleChange = (event) =>{
-    let name = event.target.name;
-    let value = event.target.value;
-    this.setState({[name]:value});
+  handleInputChange(event) {
+      this.setState({[event.target.name]: event.target.value})
   }
 
-  handleSubmit = (event) => {
-    event.preventDefault();
-    let { user } = this.state;
-    console.log(this.state);
+  submitRegistration(event){
+      event.preventDefault();
+      register(this.state)
+          .then(token => window.location = '/dashboard')
+          .catch(err => document.getElementById("RegErr").innerHTML= "<div className='alert alert-danger'>" + err + "</div>");
+  }
 // POST data
-        axios
-        .post(
-          API_URL + '/user',
-          {email: "pgadmin4@pgadmin.org", password: "pass1234"},
-          {
-            headers: {
-              "Content-Type": "application/x-www-form-urlencoded"
-            }
-          }
-        )
-        .then(res => {
-          console.log(res.status);
-          
-        });
-
-  }
   render() {
     return (
       <>
+      <HeaderSimple />
       <div className="body-wrapper log-in">
       <div className="access-container w-container">
         <div className="card sign-up">
@@ -52,26 +33,28 @@ class Registration extends React.Component {
           <div className="">
             <div className="">
 
-              <form onSubmit = { this.handleSubmit }>
+              <form onSubmit={this.submitRegistration}>
                 <div className="">
-                    <label className="email-label">Email Address</label>
-                    <input type="email" onChange={this.handleChange} className="user-email w-input" max={256} name="email" placeholder="Email address" />
+                    <label className="email-label">Username</label>
+                    <input type="text" className="user-email w-input" name="name" onChange={this.handleInputChange} placeholder="Username"/>
                 </div>
                 <div className="">
-                    {/* <label className="user-name-label">Name (public)</label> */}
-                    {/* <input type="text" className="user-public-name w-input" max={256} name="name" placeholder="Name"/> */}
+                  <label className="email-label">Email</label>
+                  <input type="email" className="user-email w-input" name="email" onChange={this.handleInputChange} placeholder="Email"/>
+                </div>
+                <div className="">
                     <label className="user-name-label">Password </label>
-                    <input type="text" onChange={this.handleChange} className="user-public-name w-input" max={256} name="password" placeholder="Password"/>
-                    {/* <label className="">
-                    <input type="checkbox"name="agree" className="w-checkbox-input"/>
-                    <span className="w-form-label">I agree to the <a href="#">terms</a> and <a href="#">conditions.</a></span>
-                    </label> */}
+                    <input type="password" className="user-public-name w-input" name="password" onChange={this.handleInputChange} placeholder="Password"/>
+                </div>
+                <div className="">
+                  <label className="email-label">Retype Password</label>
+                  <input type="password" className="user-public-name w-input" name="password2" onChange={this.handleInputChange} placeholder="Retype Password"/>
                 </div>
                 <div>
-                  <input type="submit" value="Sign Up" className="w-button"/>
-                  {/* <NavLink className="w-button" to="/dashboard"> Sign In </NavLink> */}
+                  <button type="submit" className="w-button btn btn-primary shadow-2 mb-4">Sign up</button>
                 </div>
               </form>
+
               <div className="w-form-done">
                 <div>Thank you! Your submission has been received!</div>
               </div>
@@ -103,9 +86,10 @@ class Registration extends React.Component {
         </div>
       </div>
     </div>
+    <Footer />
     </>
     );
   }
 }
 
-export default Registration;
+export default SignUp;

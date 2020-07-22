@@ -26,7 +26,7 @@ class Layout extends Component{
     render() {
         return (
             <React.Fragment>
-                {this.renderHeader()}
+                {/* {this.renderHeader()} */}
                 <RequireAuth>
                     <div className="main-box">
                         {this.props.children}

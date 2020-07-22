@@ -7,6 +7,7 @@ import { useAuth } from "../../context/auth";
 import mockup from '../../img/mock.jpg';
 import plusCircle from "../../img/plus-circle.svg";
 import chevronRight from "../../img/chevron-right.svg"
+import Layout from "../Layouts";
 const API_URL = process.env.REACT_APP_API_URL;
 
 
@@ -62,7 +63,7 @@ function ConferenceCreate(props){
 
     }
         return(
-            <>
+            <Layout>
             <Header />
             <div className="breadcrumbs">
                 <h1 className="breakcrumbs-heading">Settings</h1><img src={chevronRight} width="18"
@@ -243,7 +244,7 @@ function ConferenceCreate(props){
             </div>
             </div>
             <Footer />
-            </>
+            </Layout>
         )
 }
 export default ConferenceCreate;

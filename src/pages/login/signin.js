@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import { login } from './../components/repository';
-import HeaderSimple from '../headerSimple';
-import Footer from "../footer";
+import { login } from '../../components/repository';
+import HeaderSimple from '../HeaderSimple';
+import Footer from "../Footer";
 
 class SignIn extends Component {
   constructor(props) {
@@ -24,7 +24,6 @@ class SignIn extends Component {
 
   render() {
     return (
-
       <>
       <HeaderSimple />
         <div className="body-wrapper-business-login body-wrapper log-in">
@@ -33,17 +32,10 @@ class SignIn extends Component {
               <h1 className="heading login">Login to read and write reviews for your favorite conferences. </h1>
               <div className="">
                 <div className="">
-                  <form onSubmit={this.submitLogin}>
-                  
+                <form onSubmit={this.submitRegistration}>
                     <div className="">
                       <label className="email-label">Username</label>
-                      {/*<input type="text" value={username} onChange={event => setUsername(event.target.value)} className="user-email w-input" max={256} name="username" placeholder="Username" />*/}
-                      <input
-                          type="text"
-                          onChange={this.handleInputChange}
-                          className="user-email w-input" max={256}
-                          placeholder="Username"
-                      />
+                      <input type="text"  className="user-email w-input" max={256} name="name" onChange={this.handleInputChange} placeholder="username"/>
                     </div>
                     <div className="">
                       <label className="user-name-label">Password </label>
@@ -52,6 +44,7 @@ class SignIn extends Component {
                           onChange={this.handleInputChange}
                           className="user-email w-input" max={256}
                           placeholder="Password"
+                          name="password"
                       />
                     </div>
                     <div>
@@ -64,7 +57,6 @@ class SignIn extends Component {
             </div>
           </div>
         </div>
-
         <Footer />
       </>
     );
