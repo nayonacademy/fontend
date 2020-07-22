@@ -1,6 +1,6 @@
 import React from 'react';
-import HeaderSimple from '../HeaderSimple';
-import Footer from "../Footer";
+import HeaderSimple from '../headerSimple';
+import Footer from "../footer";
 import { register } from '../../components/repository';
 
 class SignUp extends React.Component {

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { login } from '../../components/repository';
-import HeaderSimple from '../HeaderSimple';
-import Footer from "../Footer";
+import HeaderSimple from '../headerSimple';
+import Footer from "../footer";
 
 class SignIn extends Component {
   constructor(props) {

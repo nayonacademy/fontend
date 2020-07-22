@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from "../HeaderSimple";
-import Footer from "../Footer";
-import CheckList from "./Checklist";
+import Header from "../headerSimple";
+import Footer from "../footer";
+import CheckList from "./checklist";
 function CheckListIndex(props){
         return(
             <div className="body-wrapper">

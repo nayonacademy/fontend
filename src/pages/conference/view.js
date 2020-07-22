@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import Header from "../HeaderSimple";
-import Footer from "../Footer";
+import Header from "../headerSimple";
+import Footer from "../footer";
 import axios from "axios";
-import Layout from "../Layouts";
+import Layout from "../layouts";
 const API_URL = process.env.REACT_APP_API_URL;
 
 function ConferenceView(props){

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
-import Header from "./Header";
-import Footer from "./Footer";
+import Header from "./header";
+import Footer from "./footer";
 const API_URL = process.env.REACT_APP_API_URL;
 function Conferences(props){
   const [data, setData] = useState([]);

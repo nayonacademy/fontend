@@ -1,8 +1,8 @@
 import React from 'react';
-import TopNav from "../dashboard/Header";
-import Sidebar from "../dashboard/Sidebar";
-import Purchase from "./Purchase";
-import Layout from "../Layouts";
+import TopNav from "../dashboard/header";
+import Sidebar from "../dashboard/sidebar";
+import Purchase from "./purchase";
+import Layout from "../layouts";
 
 function PurchaseIndex(props){
         return(

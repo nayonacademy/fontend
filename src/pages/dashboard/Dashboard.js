@@ -1,8 +1,8 @@
 import React from 'react';
-import TopNav from "./Header";
-import Sidebar from "./Sidebar";
-import Container from "./Container";
-import Layout from "../Layouts";
+import TopNav from "./header";
+import Sidebar from "./sidebar";
+import Container from "./container";
+import Layout from "../layouts";
 function Home(props){
         return(
             <Layout>

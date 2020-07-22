@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
-import TopNav from "../dashboard/Header";
-import Sidebar from "../dashboard/Sidebar";
+import TopNav from "../dashboard/header";
+import Sidebar from "../dashboard/sidebar";
 import axios from "axios";
 import { useAuth } from "../../context/auth";
-import Layout from "../Layouts";
+import Layout from "../layouts";
 const API_URL = process.env.REACT_APP_API_URL;
 
 function CategoryCreate(props){

@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
-import Header from "../HeaderSimple";
-import Footer from "../Footer";
+import Header from "../headerSimple";
+import Footer from "../footer";
 import axios from "axios";
 import { useAuth } from "../../context/auth";
 import mockup from '../../img/mock.jpg';
 import plusCircle from "../../img/plus-circle.svg";
 import chevronRight from "../../img/chevron-right.svg"
-import Layout from "../Layouts";
+import Layout from "../layouts";
 const API_URL = process.env.REACT_APP_API_URL;
 
 
