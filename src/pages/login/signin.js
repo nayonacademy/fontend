@@ -32,7 +32,7 @@ class SignIn extends Component {
               <h1 className="heading login">Login to read and write reviews for your favorite conferences. </h1>
               <div className="">
                 <div className="">
-                <form onSubmit={this.submitRegistration}>
+                <form onSubmit={this.submitLogin}>
                     <div className="">
                       <label className="email-label">Username</label>
                       <input type="text"  className="user-email w-input" max={256} name="name" onChange={this.handleInputChange} placeholder="username"/>

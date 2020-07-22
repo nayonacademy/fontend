@@ -2,11 +2,6 @@ import React, {useEffect, useState} from 'react';
 import Header from "../HeaderSimple";
 import Footer from "../Footer";
 import axios from "axios";
-import { Link, Redirect } from "react-router-dom";
-import { useAuth } from "../../context/auth";
-import mockup from '../../img/mock.jpg';
-import plusCircle from "../../img/plus-circle.svg";
-import chevronRight from "../../img/chevron-right.svg"
 import Layout from "../Layouts";
 const API_URL = process.env.REACT_APP_API_URL;
 

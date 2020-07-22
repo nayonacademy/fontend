@@ -13,7 +13,8 @@ function Conferences(props){
     GetData();
   },[]);
         return(
-          
+            <>
+            <Header />
             <div className="main">
             <div className="key">
               <div className="key-col w-row">
@@ -52,9 +53,9 @@ function Conferences(props){
               </div>
             })}
 
-
-
           </div>
+          <Footer />
+          </>
         )
 }
 export default Conferences;

@@ -5,20 +5,20 @@ import { AuthContext } from "./context/auth";
 import Home from "./pages/Home";
 import Login from "./pages/login/Login";
 import Dashboard from "./pages/dashboard/Dashboard";
-import Profile from "./pages/profile/index";
+import Profile from "./pages/profile/Profile";
 import CheckList from "./pages/onboarding/CheckListIndex";
 import EventLocation from "./pages/onboarding/EventLocatoinIndex";
 import ConferenceCreate from "./pages/conference/Create";
 import ConferenceView from "./pages/conference/View";
-import Purchase from "./pages/purchase/purchaseIndex";
+import Purchase from "./pages/purchase/PurchaseIndex";
 import Settings from "./pages/dashboard/SettingsIndex";
-import Password from "./pages/profile/passwordIndex";
-import Account from "./pages/profile/accountIndex";
+import Password from "./pages/profile/Password";
+import Account from "./pages/profile/Profile";
 import CategoryView from "./pages/category/View";
 import CategoryCreate from "./pages/category/Create";
 import SignUp from "./pages/login/Signup";
 import ConferenceClaim from "./pages/ConferenceClaim";
-import SingIn from "./pages/login/signin";
+import SingIn from "./pages/login/Signin";
 // import store from './store';
 
 function App(props) {
