@@ -1,66 +1,30 @@
-import React, {useState} from 'react';
+import React, {useState, Component} from 'react';
 import Header from "../headerSimple";
 import Footer from "../footer";
-import axios from "axios";
-import { useAuth } from "../../context/auth";
 import mockup from '../../img/mock.jpg';
 import plusCircle from "../../img/plus-circle.svg";
 import chevronRight from "../../img/chevron-right.svg"
 import Layout from "../layouts";
-const API_URL = process.env.REACT_APP_API_URL;
+import { conference_create } from '../../components/repository';
 
-
-function ConferenceCreate(props){
-    const [isLoggedIn, setLoggedIn] = useState(false);
-    const [isError, setIsError] = useState(false);
-    const [name, setName] = useState("");
-    const [website, setWebiste] = useState("");
-    const [about, setAbout] = useState("");
-    const [phone, setPhone] = useState("");
-    const [email, setEmail] = useState("");
-    const [address, setAddress] = useState("");
-    const [city, setCity] = useState("");
-    const [zipCode, setZipcode] = useState("");
-    const [speakers, setspeakers] = useState("Speakers");
-    const [facebook, setFacebook] = useState("");
-    const [twitter, setTwitter] = useState("");
-    const [instagram, setInstagram] = useState("");
-    const [organizerID, setorganizerID] = useState("1");
-    const [locations, setLocations] = useState("locations");
-    const [user, setUser] = useState(1);
-    const [category, setCategory] = useState(1);
-    const { setAuthTokens } = useAuth();
-
-    const handleSubmit = (evt) => {
-        evt.preventDefault();
-        console.log("results :: ",name, website, about, phone, email, address, city, zipCode, facebook, twitter, instagram);
-        
-        axios.post(API_URL+"/api/conference/list/", {
-            name,
-            website,
-            about,
-            phone,
-            email,
-            address,
-            city,
-            zipCode,
-            speakers,
-            facebook,
-            twitter,
-            instagram,
-            organizerID,
-            locations,
-            user,
-            category
-
-        }).then(result => {
-            console.log(result);
-        }).catch(e => {
-            console.log(e);
-            setIsError(true);
-        });
-
-    }
+class ConferenceCreate extends Component{
+    constructor(props) {
+        super(props);
+        this.state = { name:'',website:'',about:'',phone:'',email:'',address:'',city:'',zipCode:'',speakers:'speakers',facebook:'',twitter:'',instagram:'',organizerID:'',locations:'',user:1,category:1};
+        this.handleInputChange =this.handleInputChange.bind(this);
+        this.submitConference =this.submitConference.bind(this);
+      }
+    
+      handleInputChange(event) {
+        this.setState({[event.target.name]: event.target.value})
+      }
+    
+      submitConference(event){
+        event.preventDefault();
+        conference_create(this.state)
+            .then(token => this.props.history.push('/dashboard'))
+            .catch(err => document.getElementById("loginErr").innerHTML= "<div className='alert alert-danger'>" + err + "</div>");
+      } render(){
         return(
             <Layout>
             <Header />
@@ -75,31 +39,31 @@ function ConferenceCreate(props){
                 <div className="column-27 w-col w-col-8 w-col-small-small-stack">
                     <div className="card information">
                     <div className="w-form">
-                        <form id="email-form" name="email-form" data-name="Email Form" className="form-information w-clearfix" onSubmit={handleSubmit}>
+                        <form className="form-information w-clearfix" onSubmit={this.submitConference}>
                         <div className="form-first-half">
                             <label htmlFor="Profile-name">Display name</label>
-                            <input type="text" className="claim-form w-input" maxLength={256} name="name" data-name="Profile name" placeholder="Enter your conference name" id="Profile-name" value={name} onChange={e => setName(e.target.value)}
+                            <input type="text" className="claim-form w-input" maxLength={256} name="name" data-name="Profile name" placeholder="Enter your conference name" id="Profile-name"  onChange={this.handleInputChange}
                             />
                             <label htmlFor="Website">Company website</label>
-                            <input type="text" className="claim-form w-input" maxLength={256} name="website" data-name="Website" placeholder="Enter company website" id="Website" value={website} onChange={e => setWebiste(e.target.value)} required
+                            <input type="text" className="claim-form w-input" maxLength={256} name="website" data-name="Website" placeholder="Enter company website" id="Website"  onChange={this.handleInputChange} required
                             />
                             <label htmlFor="Website-4">Write an about section</label>
-                            <textarea placeholder="Let people know what you're about." maxLength={5000} id="field" name="about" className="claim-form text w-input" defaultValue={""} value={about} onChange={e => setAbout(e.target.value)}
+                            <textarea placeholder="Let people know what you're about." maxLength={5000} id="field" name="about" className="claim-form text w-input" onChange={this.handleInputChange}
                             />
                             <label htmlFor="Business-phone">Business phone</label>
-                            <input type="text" className="claim-form w-input" maxLength={256} name="Business-phone" data-name="Business phone" placeholder="Enter company website" id="Business-phone" required value={phone} onChange={e => setPhone(e.target.value)}
+                            <input type="text" className="claim-form w-input" maxLength={256} name="phone" data-name="Business phone" placeholder="Enter company website" id="Business-phone" required  onChange={this.handleInputChange}
                             />
                             <label htmlFor="Website-7">Business email</label>
-                            <input type="text" className="claim-form w-input" maxLength={256} name="Website-3" data-name="Website 3" placeholder="Enter company website" id="Website-3" required value={email} onChange={e => setEmail(e.target.value)}
+                            <input type="text" className="claim-form w-input" maxLength={256} name="email" data-name="Website 3" placeholder="Enter company website" id="Website-3" required  onChange={this.handleInputChange}
                             />
                             <label htmlFor="Mailing-Address">Business street address</label>
-                            <input type="text" className="claim-form w-input" maxLength={256} name="Mailing-Address" data-name="Mailing Address" id="Mailing-Address" required value={address} onChange={e => setAddress(e.target.value)}
+                            <input type="text" className="claim-form w-input" maxLength={256} name="address" data-name="Mailing Address" id="Mailing-Address" required  onChange={this.handleInputChange}
                             />
                             <label htmlFor="City">Business city location</label>
-                            <input type="text" className="claim-form w-input" maxLength={256} name="City" data-name="City" id="City" required value={city} onChange={e => setCity(e.target.value)}
+                            <input type="text" className="claim-form w-input" maxLength={256} name="city" data-name="City" id="City" required  onChange={this.handleInputChange}
                             />
                             <label htmlFor="Zipcode-6">Business zipcode</label>
-                            <input type="text" className="claim-form w-input" maxLength={256} name="zipCode" data-name="Zipcode" id="Zipcode" required value={zipCode} onChange={e => setZipcode(e.target.value)}
+                            <input type="text" className="claim-form w-input" maxLength={256} name="zipCode" data-name="Zipcode" id="Zipcode" required  onChange={this.handleInputChange}
                             />
                         </div>
                         <div className="form-second-half">
@@ -109,6 +73,9 @@ function ConferenceCreate(props){
                                 We recommend having at least three notable speakers or
                                 people in your list. You can add up to five.
                                 </p>
+                                <input type="text" hidden name="speakers" value="speakers" />
+                                <input type="text" hidden name="user" value="1" />
+                                <input type="text" hidden name="category" value="1" />
                             </div>
                             <div className="w-col w-col-1">
                                 <img src={plusCircle} width={30} data-w-id="6e3c0339-6cf5-1654-fe2e-7e5a777f4bae" className="add-speaker"
@@ -187,13 +154,13 @@ function ConferenceCreate(props){
                             <div className="column-30 w-col w-col-1" />
                             </div>
                             <label htmlFor="Facebook-link">Facebook link</label>
-                            <input type="text" className="claim-form w-input" maxLength={256} name="Facebook-link" data-name="Facebook link" placeholder="Facebook  link" id="Facebook-link" value={facebook} onChange={e => setFacebook(e.target.value)}
+                            <input type="text" className="claim-form w-input" maxLength={256} name="facebook" data-name="Facebook link" placeholder="Facebook  link" id="Facebook-link"  onChange={this.handleInputChange}
                             />
                             <label htmlFor="Twitter-link">Twitter link</label>
-                            <input type="text" className="claim-form w-input" maxLength={256} name="Twitter-link" data-name="Twitter link" placeholder="Twitter link" id="Twitter-link" value={twitter} onChange={e => setTwitter(e.target.value)}
+                            <input type="text" className="claim-form w-input" maxLength={256} name="twitter" data-name="Twitter link" placeholder="Twitter link" id="Twitter-link"  onChange={this.handleInputChange}
                             />
                             <label htmlFor="Instagram-link">Instagram link</label>
-                            <input type="text" className="claim-form w-input" maxLength={256} name="Instagram-link" data-name="Instagram link" placeholder="Instagram link" id="Instagram-link" value={instagram} onChange={e => setInstagram(e.target.value)}
+                            <input type="text" className="claim-form w-input" maxLength={256} name="instagram" data-name="Instagram link" placeholder="Instagram link" id="Instagram-link"  onChange={this.handleInputChange}
                             />
                         </div>
                         <div className="form-third-half">
@@ -216,17 +183,20 @@ function ConferenceCreate(props){
                             </div>
                             <div className="column-31 w-col w-col-1" />
                             </div>
+                            <input type="text" className="claim-form w-input" maxLength={256} name="locations" placeholder="organizerID"  onChange={this.handleInputChange}
+                            />
                             <label htmlFor="Person-6">Organization ID</label>
                             <p>
                             If you have an organization ID from any of the listed
                             affiliates below, please enter it below.{" "}
                             </p>
-                            <input type="text" className="claim-form w-input" maxLength={256} name="organizerID" placeholder="organizerID" value={organizerID} onChange={e => setorganizerID(e.target.value)}
+                            <input type="text" className="claim-form w-input" maxLength={256} name="organizerID" placeholder="organizerID"  onChange={this.handleInputChange}
                             />
                         </div>
                         <input type="submit" defaultValue="Next" data-wait="Please wait..." className="submit-button-4 w-button"
                         />
                         </form>
+                        <div id="loginErr"></div>
                         <div className="w-form-done">
                         <div>Thank you! Your submission has been received!</div>
                         </div>
@@ -245,5 +215,6 @@ function ConferenceCreate(props){
             <Footer />
             </Layout>
         )
+    }
 }
 export default ConferenceCreate;

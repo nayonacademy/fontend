@@ -1,9 +1,7 @@
 import React from 'react';
+import {logOut} from "../../components/repository";
 
 function DashboardSidebar(props) {
-    function logOut() {
-        localStorage.removeItem('x-access-token');
-    }
     
         return(
             <div className="menu-container">

@@ -1,32 +1,27 @@
-import React, {useState} from 'react';
+import React, {useState, Component} from 'react';
+import { category_create } from '../../components/repository';
 import TopNav from "../dashboard/header";
 import Sidebar from "../dashboard/sidebar";
-import axios from "axios";
-import { useAuth } from "../../context/auth";
 import Layout from "../layouts";
-const API_URL = process.env.REACT_APP_API_URL;
 
-function CategoryCreate(props){
-    const [isLoggedIn, setLoggedIn] = useState(false);
-    const [isError, setIsError] = useState(false);
-    const [name, setName] = useState("");
-    const { setAuthTokens } = useAuth();
-  
-    const handleSubmit = (evt) => {
-      evt.preventDefault();
-      axios.post(API_URL+"/api/category/list/", {
-        name
-      }).then(result => {
-
-        if (result.status === 201) {
-          console.log(result);
-          window.location.href = "/category";
+class CategoryCreate extends Component{
+    constructor(props) {
+        super(props);
+        this.state = { name: ''};
+        this.handleInputChange =this.handleInputChange.bind(this);
+        this.submitCategory =this.submitCategory.bind(this);
       }
-      }).catch(e => {
-
-      });
-  
-    }
+    
+      handleInputChange(event) {
+        this.setState({[event.target.name]: event.target.value})
+      }
+    
+      submitCategory(event){
+        event.preventDefault();
+        category_create(this.state)
+            .then(token => this.props.history.push('/category'))
+            .catch(err => document.getElementById("loginErr").innerHTML= "<div className='alert alert-danger'>" + err + "</div>");
+      } render(){
         return(
             <Layout>
             <div className="bodycontainer">
@@ -40,14 +35,14 @@ function CategoryCreate(props){
                     
                     <div className="">
                         <div className="">
-                        <form onSubmit={handleSubmit}>
+                        <form onSubmit={this.submitCategory}>
                             <div className="">
                             <label className="email-label">Category Name</label>
                             {/*<input type="text" value={username} onChange={event => setUsername(event.target.value)} className="user-email w-input" max={256} name="username" placeholder="Username" />*/}
                             <input
                                 type="text"
-                                value={name}
-                                onChange={e => setName(e.target.value)}
+                                name="name"
+                                onChange={this.handleInputChange}
                                 className="user-email w-input" max={256}
                                 placeholder="Category name"
                             />
@@ -56,6 +51,7 @@ function CategoryCreate(props){
                             <input type="submit" value="Add" className="w-button"/>
                             </div>
                         </form>
+                        <div id="loginErr"></div>
                         </div>
                     </div>
                     </div>
@@ -65,5 +61,6 @@ function CategoryCreate(props){
             </div>
             </Layout>
         )
+}
 }
 export default CategoryCreate;

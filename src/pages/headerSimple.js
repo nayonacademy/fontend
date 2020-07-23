@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {logOut} from "../components/repository"
 function HeaderSimple(props){
   const authcheck = () =>{
     if(localStorage.getItem('x-access-token')){
@@ -8,9 +8,7 @@ function HeaderSimple(props){
       return <a href="/login" className="sign-in-button w-button">Sign in</a>
     }
   }
-  function logOut() {
-    localStorage.removeItem('x-access-token');
-  }
+
   return(
     <div className="co nav">
       <div className="logo-container">

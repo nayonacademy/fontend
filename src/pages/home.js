@@ -1,17 +1,19 @@
-import React, {useEffect, useState} from 'react';
-import axios from "axios";
+import React, {useEffect, useState, Component} from 'react';
 import Header from "./header";
 import Footer from "./footer";
-const API_URL = process.env.REACT_APP_API_URL;
-function Conferences(props){
-  const [data, setData] = useState([]);
-  useEffect(()=>{
-    const GetData = async () =>{
-      const result = await axios(API_URL+'/api/conference/list/');
-      setData(result.data.results);
-    };
-    GetData();
-  },[]);
+import { home } from '../components/repository';
+class Home extends Component {
+
+  state = {
+    data: []
+  }
+  componentDidMount() {
+    home()
+      .then(data => {
+        this.setState({ data });
+      })
+  }
+      render(){
         return(
             <>
             <Header />
@@ -32,15 +34,15 @@ function Conferences(props){
                 </div>
               </div>
             </div>
-              {data.map(function(item, i){
-              return <div data-w-id="86ee10ea-5d7b-e500-d866-67b9256afbe6" className="list-item-container i">
+            { this.state.data.map((data, i)=>
+               <div data-w-id="86ee10ea-5d7b-e500-d866-67b9256afbe6" className="list-item-container i">
                 <div className="list-item-button">
                   <div className="key-col w-row">
                     <div className="key-rank-col w-col w-col-3">
-                      <div className="rank">#{i}</div>
+                      <div className="rank">#{i+1}</div>
                     </div>
                     <div className="key-name-col w-col w-col-3">
-                      <div className="name">{item.name}</div>
+                      <div className="name">{data.name}</div>
                     </div>
                     <div className="key-rating-col w-col w-col-3">
                       <div className="rating"><strong className="current_star global"></strong></div>
@@ -51,11 +53,12 @@ function Conferences(props){
                   </div>
                 </div>
               </div>
-            })}
+            )}
 
           </div>
           <Footer />
           </>
         )
 }
-export default Conferences;
+}
+export default Home;

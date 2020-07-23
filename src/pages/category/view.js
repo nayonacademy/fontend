@@ -1,28 +1,27 @@
-import React, {useState,useEffect} from 'react';
+import React, {Component} from 'react';
+import { category_all } from '../../components/repository';
 import Header from "../headerSimple";
 import Footer from "../footer";
-import axios from "axios";
 import Layout from "../layouts";
-const API_URL = process.env.REACT_APP_API_URL;
 
-function CategoryView(props){
-    const [data, setData] = useState([]);
-    useEffect(()=>{
-      const GetData = async () =>{
-        const result = await axios(API_URL+'/api/category/list/');
-        setData(result.data.results);
-      };
-      GetData();
-    },[]);
-
+class CategoryView extends Component {
+    state = {
+        data: []
+      }
+      componentDidMount() {
+        category_all()
+          .then(data => {
+            this.setState({ data });
+          })
+      }
+      
+    render(){
     return(
         <Layout>
         <Header />
         <div className="breadcrumbs">
         <h1 className="breakcrumbs-heading">
-            <a href="../../conference/dashboard.html" className="link">
-            Settings
-            </a>
+            <a href="../../conference/dashboard.html" className="link">Settings</a>
         </h1>
         <h1 className="breakcrumbs-heading current">Category</h1>
         </div>
@@ -30,12 +29,11 @@ function CategoryView(props){
         <div className="b2b-container-category">
             <div className="card">
             <div className="w-form">
-                
                 <div className="category-container w-row">
                     <div className="w-col w-col-3">
-
-                        {data.map(function(item, i){
-                            return <label className="category-select w-radio">
+                    { this.state.data.map(data =>
+      
+                            <label className="category-select w-radio">
                             <div className="w-form-formradioinput w-form-formradioinput--inputType-custom radio-button-8 w-radio-input" />
                             <input
                             type="radio"
@@ -45,14 +43,11 @@ function CategoryView(props){
                             defaultValue="Animals and Pets"
                             style={{ opacity: 0, position: "absolute", zIndex: -1 }}
                             />
-                            <span
-
-                            className="category-select-radio w-form-label"
-                            >
-                            {item.name}
+                            <span className="category-select-radio w-form-label">
+                            {data.name}
                             </span>
                         </label>
-                            })}
+                    )}  
                     </div>
                     <div className="w-col w-col-3">
 
@@ -79,5 +74,6 @@ function CategoryView(props){
         <Footer />
         </Layout>
     )
+}
 }
 export default CategoryView;
